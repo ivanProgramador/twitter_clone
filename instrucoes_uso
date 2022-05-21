@@ -1,0 +1,15 @@
+Esse framework tem como objetivo ser a base apara a construção de aplicações web 
+como acomodar os arquivos da aplicação dentro desse framework:
+
+1 - coloque os arquivos e diretorios referentes a view do seu aplicativo dentro da pasta public 
+   (essa e a parte da entrada do sistama onde seu cliente vai ter o primeiro contato com ele)os arquivos ao qual eu me refiro são pastas com css,js,imagens.
+
+
+
+2 - coloque as paginas principais como index do seu projeto dentro da pasta view e o index coloque dentro da pasta index as paginas prinpais devem ficar dentro desse diretorio
+
+3 - o arquivo layout deve ter a refencia do seu css mas quano referenciar não aponte o link para a pasta public
+    aponte o link para a raiz que a pasta App e digite o nome do arquivo de estilo. exemplo /css/style.css o autoload vai fazer o resto.
+
+
+
