@@ -1,0 +1,19 @@
+{
+	"name":"miniframewok",
+	
+	"require":{
+
+		 "php": ">= 7.0"
+	},
+
+	"authors":[{
+		"name":"ivan"
+	}],
+
+	"autoload":{
+		"psr-4":{
+			"App\\":"App/",
+			"MF\\":"vendor/MF/"
+		}
+	}
+}
