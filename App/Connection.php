@@ -13,7 +13,7 @@
             // como eu estou usando namespace App se eue não colocar a barra vai dar erro porque essa classe nao existe
             // dentro da pasta App
 
-            $conn = new \PDO("mysql:host=localhost;dbname=mvc;charset=utf8","root","");
+            $conn = new \PDO("mysql:host=localhost;dbname=twitter_clone;charset=utf8","root","");
 
             return $conn;
 

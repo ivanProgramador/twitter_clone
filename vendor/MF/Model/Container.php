@@ -15,7 +15,7 @@
 
  		//instancia do modelo
 
- 		$class ="\\App\\Models\\".ucfirst($model);
+ 		$class ='\\App\\Models\\'.ucfirst($model);
 
  		//instancia da conexao
 

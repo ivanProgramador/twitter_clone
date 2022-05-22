@@ -11,5 +11,62 @@ como acomodar os arquivos da aplicação dentro desse framework:
 3 - o arquivo layout deve ter a refencia do seu css mas quano referenciar não aponte o link para a pasta public
     aponte o link para a raiz que a pasta App e digite o nome do arquivo de estilo. exemplo /css/style.css o autoload vai fazer o resto.
 
+4 - O arquivo rotas deve ter um array pra cada rota exemplo abaxo tem a rota index e a rota inscrever-se 
+    cada uma dessas rotas tem o seu action que a função que será acionada la no controller quando essa rota
+    for requisitada pelo cliente
+
+      	$routes['home'] = array(
+      	 		'route' => '/' ,
+      	 		'controller' => 'indexController',
+      	 		'action' => 'index'
+      	 	);
+
+            $routes['inscreverse'] = array(
+            'route' => '/inscreverse',
+            'controller' => 'indexController',
+            'action' => 'inscreverse'
+          );
+
+ 05 - depois de criar a rota e necessario criar la no index controller uma função que vai mandar ela pra ser rederizada pelo render() exemplo 
+
+            public function inscreverse(){
+
+
+          	$this->render('inscreverse');
+
+          }
+
+
+ 06 - A conexão com a base de dados usa PDO então na classe conection altere o atributo dbname para o banco de dados da sua plicação.(o framework ja carrega a conexão)
+
+ 07 - crie seus modelos dentro da pasta models todos os models devem usar o namespace 'namespace App\Model;'
+      pra puxar os aruivos de ntro da pasta Model e usar a diretiva  ' use MF\Model\Model;' para puxar a classe
+      model do framework e depois extender a classe Model.
+
+
+  namespace App\Model;
+  use MF\Model\Model;
+
+  class Usuario extends Model{
+          
+        private $id;
+        private $nome;
+        private $email;
+        private $senha;
+
+        
+
+  }
+
+  08 - as instruções sql que são executadas no banco ficam dentro dos metodos modelos.
+ 
+
+    
+
+
+
+
+
+
 
 
