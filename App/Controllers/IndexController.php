@@ -45,7 +45,17 @@ use MF\Model\Container;
 
             $usuario->__set('nome',$_POST['nome']);
             $usuario->__set('email',$_POST['email']);
-            $usuario->__set('senha',$_POST['senha']);
+            
+            // criptografando a senha de um usuario
+            // a função md5() converte a senha em rash de 32 caracteres
+            // por isso o campo senha no banco de dados tem 32 posições
+            // quando essa função é usada tanto o registro tem que usar a md5
+            //quanto a entrada(login) porque pra logar ele vai comparar rash com rash
+            //para autenticar se ele comparar o resh com a senha vai dar erro 
+            
+
+
+            $usuario->__set('senha',md5($_POST['senha']));
             
 
             // validando se os dados inseridos no cadastro tem mais de 3 caracteres
