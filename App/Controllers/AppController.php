@@ -19,6 +19,21 @@
 
 			if($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
+				//recuperando os tweets
+
+				$tweet = Container::getModel('Tweet');
+				
+				$tweet->__set('id_usuario', $_SESSION['id']);
+
+				$tweets = $tweet->getAll();
+
+                
+                echo "<pre>";
+				print_r($tweets);
+				echo "</pre>";
+
+
+
 				$this->render('timeline');
 				
 			}else {
@@ -38,14 +53,22 @@
 
 			//testando se o susrio antes de entrar passou pelo processo de autenticação
 			//se ele não tiver passado esses indices vão estar vazios porque ele não 
-			//preencheu o formulario se estiver vazia o header vaidirecionar ele ao formulario de 
+			//preencheu o formulario se estiver vazia o header vai direcionar ele ao formulario de 
 			//autenticação
 
 			if($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
-				echo "<pre>";
-			    print_r($_POST);
-			    echo "</pre>";
+
+				$tweet = Container::getModel('tweet');
+
+				$tweet->__set('tweet', $_POST['tweet']);
+
+				$tweet->__set('id_usuario', $_SESSION['id']);
+
+				$tweet->salvar();
+
+				header('Location: /timeline');
+
 				
 			}else {
 
