@@ -10,14 +10,8 @@
 
 		public function timeline(){
 
-			session_start();
-
-			//testando se o susrio antes de entrar passou pelo processo de autenticação
-			//se ele não tiver passado esses indices vão estar vazios porque ele não 
-			//preencheu o formulario se estiver vazia o header vaidirecionar ele ao formulario de 
-			//autenticação
-
-			if($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+						
+			    $this->validaAutenticacao();
 
 				//recuperando os tweets
 
@@ -26,20 +20,12 @@
 				$tweet->__set('id_usuario', $_SESSION['id']);
 
 				$tweets = $tweet->getAll();
-
                 
-                echo "<pre>";
-				print_r($tweets);
-				echo "</pre>";
-
-
+                $this->view->tweets = $tweets;
 
 				$this->render('timeline');
 				
-			}else {
-
-				header('Location: /?login=erro');
-			}
+		
 
 			
 		}
@@ -49,16 +35,9 @@
 		public function tweet(){
 
 
-			session_start();
+			    $this->validaAutenticacao();
 
-			//testando se o susrio antes de entrar passou pelo processo de autenticação
-			//se ele não tiver passado esses indices vão estar vazios porque ele não 
-			//preencheu o formulario se estiver vazia o header vai direcionar ele ao formulario de 
-			//autenticação
-
-			if($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-
-
+			
 				$tweet = Container::getModel('tweet');
 
 				$tweet->__set('tweet', $_POST['tweet']);
@@ -69,16 +48,27 @@
 
 				header('Location: /timeline');
 
-				
-			}else {
-
-				header('Location: /?login=erro');
-			}
-
-
-
 
 			
+		}
+
+
+		public function validaAutenticacao(){
+
+			session_start();
+
+			//testando se o susrio antes de entrar passou pelo processo de autenticação
+			//se ele não tiver passado esses indices vão estar vazios porque ele não 
+			//preencheu o formulario se estiver vazia o header vai direcionar ele ao formulario de 
+			//autenticação
+
+
+			if(!isset($_SESSION['id']) || $_SESSION['id'] == '' && !isset($_SESSION['nome']) || $_SESSION['nome'] == '') {
+
+				header('Location: /?login=erro');
+                
+
+			}
 		}
 
 
