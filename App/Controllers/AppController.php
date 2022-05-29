@@ -122,6 +122,8 @@
 
 			}
 
+			header('Location: /quem_seguir');
+
 
 
 
