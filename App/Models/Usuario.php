@@ -192,13 +192,24 @@
             $stmt->bindValue(':id_usuario_seguindo',$id_usuario_seguindo);
 
             $stmt->execute();
-
-
-
+          
 
             
+        }
 
-            
+
+        public function removerTweet($id){
+
+
+            $query = "delete from tweets where id_usuario = :id_usuario";
+            $stmt  = $this->db->prepare($query);
+            $stmt->bindValue('id_usuario', $id);
+            $stmt->execute();
+
+
+
+
+
         }
 
 

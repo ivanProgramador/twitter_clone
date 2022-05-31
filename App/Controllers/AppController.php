@@ -134,6 +134,24 @@
 		}
 
 
+		public function remover(){
+
+
+			$this->validaAutenticacao();
+
+			$usuario = Container::getModel('Usuario');
+
+			$id_usuario = $_GET['id_usuario_'];
+
+			$usuario->removerTweet($id_usuario);
+
+			header('Location: /timeline');
+
+
+
+		}
+
+
 
 
 
