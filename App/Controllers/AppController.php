@@ -26,10 +26,10 @@
                 $usuario = Container::getModel('Usuario');
                 $usuario->__set('id',$_SESSION['id']);
 
-	              $this->view->info_usuario    =  $usuario-> getInfoUsuario();
-	              $this->view->total_tweets    =  $usuario-> getTotalTweets();
-	              $this->view->total_seguindo  =  $usuario-> getTotalSeguindo();
-	              $this->view->info_seguidores =  $usuario-> getTotalSeguidores();
+	              $this->view->info_usuario     =  $usuario-> getInfoUsuario();
+	              $this->view->total_tweets     =  $usuario-> getTotalTweets();
+	              $this->view->total_seguindo   =  $usuario-> getTotalSeguindo();
+	              $this->view->total_seguidores =  $usuario-> getTotalSeguidores();
 
 
 
@@ -156,13 +156,18 @@
 
 			$this->validaAutenticacao();
 
+			$id_tweet = $_GET['id_tweet'];
+
 			$usuario = Container::getModel('Usuario');
 
-			$id_usuario = $_GET['id_usuario_'];
-
-			$usuario->removerTweet($id_usuario);
+			$usuario->removerTweet($id_tweet);
 
 			header('Location: /timeline');
+
+
+
+
+			
 
 
 

@@ -201,12 +201,21 @@
         public function removerTweet($id){
 
 
-            $query = "delete from tweets where id_usuario = :id_usuario";
+            $query = "delete from tweets where id=:id";
             $stmt  = $this->db->prepare($query);
-            $stmt->bindValue('id_usuario', $id);
+            $stmt->bindValue('id',$id);
             $stmt->execute();
 
         }
+
+
+
+
+
+
+
+
+
 
         //pegando informações do usuario
 
@@ -247,7 +256,7 @@
 
         public function getTotalSeguindo(){
 
-            $query = "select count(*) as total_seguindo fom usuarios_seguidores where id_usuario = :id_usuario";
+            $query = "select count(*) as total_seguindo from usuarios_seguidores where id_usuario = :id_usuario";
 
             $stmt = $this->db->prepare($query);
 
@@ -265,7 +274,7 @@
 
             $query = "select count(*) as total_seguidores from usuarios_seguidores where id_usuario_seguindo = :id_usuario";
 
-             $stmt = $this->db->prepare($query);
+            $stmt = $this->db->prepare($query);
 
             $stmt->bindValue(':id_usuario',$this->__get('id'));
 
