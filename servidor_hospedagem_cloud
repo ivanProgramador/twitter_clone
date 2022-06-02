@@ -1,0 +1,9 @@
+As diferenças entre servidor de hospedagem e cloud 
+
+- o servidor de hospedagem disponibiliza o cpanel uma interface padrão para o controle de recursos de um 
+  servidor que podem ser disponibilizados ou não dependendo do seu plano contratado
+
+- Cloud ao inves de ter um painel de controle com os recursos de um servidor, o cliente pode colocar um sistema 
+  operacional inteiro com a possibilidade de instalar o servidor dentro dele, isso dá mais liberadade para que
+  o cliente possa rodar o software com uma configuração mais especifica ou adaptar o sistema operacional a sua necessidade  
+
