@@ -5,5 +5,47 @@ As diferenças entre servidor de hospedagem e cloud
 
 - Cloud ao inves de ter um painel de controle com os recursos de um servidor, o cliente pode colocar um sistema 
   operacional inteiro com a possibilidade de instalar o servidor dentro dele, isso dá mais liberadade para que
-  o cliente possa rodar o software com uma configuração mais especifica ou adaptar o sistema operacional a sua necessidade  
+  o cliente possa rodar o software com uma configuração mais especifica ou adaptar o sistema operacional a sua necessidade 
+
+
+  Fazendo o deploy de uma aplicação de forma local no xampp
+
+  1 - passo iniciar o serviço
+  2 - criar a base de dados(os ser vidores de hospedagem possuem SGBDS que suportam SQL)
+      o tamaho de espaço para sua base de dados pode variar conforme o plano contratado
+      mas o SGBD é um padrão e SQL tambem 
+
+  3 - no diretorio publico do xampp(HTDOCS) tem algus arquivos padrão que saão gerados na instalação dele 
+     crie uma pasta bkp e coloque todos esses arquivos lá nunca exclua aqruivos padrão para não ter problemas
+
+  4 - pegue todos os arquivos da pasta public e coloque dentro da htdocs porque a htdocs vai assar a aser a apasta publica da aplicação
+
+  5 - saia da pasta publica e entre na pasta xampp os arquivos de base da aplicação NÃO PODEM FICAR NA PASTA PUBLICA DO SERVIDOR, porque isso expoe toda a aplicação a ataques dando a possibilidade de baixar o codigo 
+  dela, crie uma pasta com o nome da aplicação dentro da pasta xampp depois copie todas os aqruivos e diretorios da aplicação exceto a pasta publica(essa ja existe dentro do htdocs)
+
+  6 - ajuste o arquivo index para buscar o autoload dentro da pasta xampp ../twitter_clone/vendor/autoload.php
+      no caso a url sobe um nivel pra pasta xampp depois ela entra em twitter clone acessa a pasta vendor e car
+      rega o autoload.php no caso so twitter clone verificar tamebm as urls de requisição das views 
+
+      porem mesmo com esses ajustes e necessarios mexer nas rotas(isso nao é uma coisa funcional) porque fazendo isso eu vou estar reprogramando o aplicativo eo objetivo e fazer o Deply e não reprogramar nesse momento entra em cena o .htacess / 
+
+      1 - coloque o .htacess na pasta publica do servidor 
+
+      2 - o htacess serve para completar as urls requisitadas dentro da aplicação automaticamente para que não haja erro de rotas 
+
+
+
+  7 - verifique o arquivo de conexaão com a base de dados / no caso desse aplicativo ele ja esta configurado 
+      de forma padrão para o xampp , mas em um servidor de hospedagem eu vou ter que configurar o arquivo colocando a senha e o usuario e o nome do banco de dados.
+
+
+
+
+
+
+
+
+
+
+   
 
