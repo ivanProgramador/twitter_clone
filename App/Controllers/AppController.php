@@ -19,9 +19,60 @@
 				
 				$tweet->__set('id_usuario', $_SESSION['id']);
 
-				$tweets = $tweet->getAll();
+				//variaveis de paginação
+                //as diferenças entre as variveis de deslocamento
+                //e paginação controla o numero maximo de itens
+                //que podem aparecer em uma pagina
+                //o deslocamento controla a navegação entre esses itens
+
+
+
+
+                $total_registros_por_pagina = 10;
+                $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+                $deslocamento = ($pagina - 1) * $total_registros_por_pagina;
+
+
+
+
+
+
+                // indo para a pagina 2 o offset recebe o valor de 10 
+                //esse caso ele vai pular os 10 registros apartir do primeiro 
+                //e a pagina ja e a segunda
+                /*
+                $total_registros_por_pagina = 10;
+                $deslocamento = 10;
+                $pagina = 2;
+                */
+
+
+                // acessando a aterceira pagina de dados
+                //o ofset agora e 20 para pular 20 registros e mostrar
                 
-                $this->view->tweets = $tweets;
+                /*
+                $total_registros_por_pagina = 10;
+                $deslocamento = 20;
+                $pagina = 3;
+                */
+          
+
+
+                $tweets = $tweet->getPorPagina($total_registros_por_pagina,$deslocamento);
+                $total_tweets = $tweet->getTotalRegistros();
+                $this->view->total_de_paginas = ceil($total_tweets['total'] / $total_registros_por_pagina);
+                $this->view->pagina_ativa = $pagina;
+
+
+
+				
+
+				// $tweets = $tweet->getAll();
+                
+                $this->view->tweets = $tweets;  
+
+               
+                
 
                 $usuario = Container::getModel('Usuario');
                 $usuario->__set('id',$_SESSION['id']);
